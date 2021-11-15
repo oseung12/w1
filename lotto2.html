@@ -56,27 +56,17 @@
         </nav>
         <!-- Page content-->
         <div class="container-fluid">
-            <h1 class="mt-4">이 페이지는 로또 페이지</h1>
+            <h1 class="mt-4">이 페이지는 로또 자판기</h1>
 
-            <button class="btn btn-primary" id="btn">CLICK</button>
+            <div class="input-group mb-3">
+                <input type="number" id="moneyInput" class="form-control" placeholder="얼마?" value="3000">
+                <button class="btn btn-outline-secondary mybtn" type="button" >Button</button>
 
-            <style>
-                #resultDiv {
-                    display: flex;
-                }
-
-                #resultDiv > h3 {
-                    background-color: #31d2f2;
-                    color: white;
-                    margin: 10px;
-                    padding: 20px;
-                    border-radius: 40px;
-                    box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);
-                }
-
-            </style>
+            </div>
 
             <div id="resultDiv">
+
+
 
             </div>
 
@@ -93,16 +83,46 @@
 
 <script>
 
-    console.log("--------------------------")
-    console.log(btn)
+    const btn = document.querySelector(".mybtn")
 
-    btn.addEventListener("click", function(event) {
-        console.log("--------------111111")
-        console.log("--------------111111")
-        console.log(event)
-        console.log("--------------111111")
-        console.log("--------------111111")
-    }, false)
+    btn.addEventListener("click", () => {
+        console.log("button clicked..................")
+
+        const money = document.querySelector("#moneyInput").value
+
+        if(money < 1000){
+            alert("이금액으로 못 합니다.")
+            return
+        }
+
+        console.log(money)
+
+        const count = parseInt(money) / 1000
+
+        const resultDiv = document.querySelector("#resultDiv")
+
+        let str = ''
+
+        for (let i = 0; i < count; i++) {
+            const balls = makeLottoNum()
+
+            str += "<ul>"
+            //balls를 루프를 돌려
+            for (let j = 0; j < balls.length; j++) {
+                str += `<li>${balls[j]}</li>`
+
+            }
+
+            str += "</ul>"
+
+        }//end for
+
+        console.log("=========================")
+        console.log(str)
+
+        resultDiv.innerHTML = str
+
+    },false)
 
 </script>
 
