@@ -58,14 +58,14 @@
         <div class="container-fluid">
             <h1 class="mt-4">이 페이지는 로또 자판기</h1>
 
+
             <div class="input-group mb-3">
-                <input type="number" id="moneyInput" class="form-control" placeholder="얼마?" value="3000">
-                <button class="btn btn-outline-secondary mybtn" type="button" >Button</button>
+                <input type="number" id="moneyInput" class="form-control" placeholder="얼마?" value="3000">  <!--//input tag; 스타일 삽입  value; 기본값 지정-->
+                <button class="btn btn-outline-secondary mybtn" type="button" >Button</button>   <!--//css 속성은 여러개 부여가 가능하다.-->
 
             </div>
 
             <div id="resultDiv">
-
 
 
             </div>
@@ -81,18 +81,24 @@
 
 <script src="js/lotto.js"></script>
 
+
 <script>
+    // clss가 btn인 버튼을 클릭하도록
+    const btn = document.querySelector(".mybtn")   //css 로 찾도록 하기위해 . 을 사용함.  //css 는 값 또는 null 만 가져온다.
 
-    const btn = document.querySelector(".mybtn")
+    //이벤트 걸고 잘 안될시 디버깅하는법
+    //console.log(mybtn) mybtn 이 존재하는 지 확인
 
+    //이벤트 걸어주기(click) callback 함수 사용
     btn.addEventListener("click", () => {
         console.log("button clicked..................")
 
-        const money = document.querySelector("#moneyInput").value
+        const money = document.querySelector("#moneyInput").value   // <!-- moneyinput 을 클릭을 하면 금액.value 값을 가져온다 -->
+
 
         if(money < 1000){
-            alert("이금액으로 못 합니다.")
-            return
+            alert("이금액으로 못 합니다.")  // money 값이 맞지 않을 경우 실행하지 않는다고 경고창
+            return   //밑에 있는 값 실행하지 못한다.  함수가 종료됨을 의미한다.
         }
 
         console.log(money)
